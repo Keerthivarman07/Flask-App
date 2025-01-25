@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Images</title>
+</head>
+<body>
+    <h2>User Images</h2>
+    {% for img in images %}
+        <div>
+            <img src="{{ url_for('static', filename='uploads/' + img.filename) }}" width="200">
+            <p>Status: {{ img.status }}</p>
+            <a href="{{ url_for('update_status', image_id=img.id, status='accepted') }}">Accept</a> |
+            <a href="{{ url_for('update_status', image_id=img.id, status='denied') }}">Deny</a>
+        </div>
+    {% endfor %}
+
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
