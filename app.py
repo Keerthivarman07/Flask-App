@@ -170,4 +170,4 @@ if __name__ == "__main__":
             db.session.commit()
             print("Admin account created with mobile:", admin_mobile)
 
-    app.run(debug=True)
+    app.run(debug=False)
