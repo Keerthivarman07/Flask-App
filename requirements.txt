@@ -5,3 +5,4 @@ flask-wtf
 wtforms
 werkzeug
 flask-migrate
+gunicorn
