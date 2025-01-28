@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Image Comparison</title>
+</head>
+<body>
+    <h1>Admin Image Comparison</h1>
+
+    <h3>Admin Reference Image:</h3>
+    <img src="{{ url_for('static', filename='uploads/admin_reference.jpg') }}" alt="Admin Reference Image" width="200">
+
+    <form action="{{ url_for('admin_assign_credits') }}" method="POST">
+        <h3>Similar Images:</h3>
+        <div class="similar-images">
+            {% for item in similar_images %}
+                <div class="image-item">
+                    <h4>{{ item.user.name }} ({{ item.user.mobile }})</h4>
+                    <img src="{{ url_for('static', filename='uploads/' + item.image.filename) }}" alt="User Image" width="100">
+                    <p>Similarity Score: {{ item.similarity_score }}</p>
+                    <input type="checkbox" name="selected_images" value="{{ item.image.id }}"> Select for Credit
+                </div>
+            {% endfor %}
+        </div>
+
+        <h3>Non-Similar Images:</h3>
+        <div class="non-similar-images">
+            {% for item in non_similar_images %}
+                <div class="image-item">
+                    <h4>{{ item.user.name }} ({{ item.user.mobile }})</h4>
+                    <img src="{{ url_for('static', filename='uploads/' + item.image.filename) }}" alt="User Image" width="100">
+                    <p>Similarity Score: {{ item.similarity_score }}</p>
+                    <input type="checkbox" name="selected_images" value="{{ item.image.id }}"> Select to Move to Similar
+                </div>
+            {% endfor %}
+        </div>
+
+        <h3>Enter Credits for Selected Images:</h3>
+        <input type="number" name="credits" min="0" required>
+        <button type="submit">Assign Credits</button>
+    </form>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

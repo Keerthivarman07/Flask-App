@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Admin Login</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>Admin Login</h1>
     <form method="POST">
         <label for="mobile">Mobile Number:</label>
         <input type="text" id="mobile" name="mobile" required><br>
@@ -16,6 +16,6 @@
 
         <button type="submit">Login</button>
     </form>
-    <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    <p>Go back to <a href="{{ url_for('home') }}">Home</a></p>
 </body>
 </html>

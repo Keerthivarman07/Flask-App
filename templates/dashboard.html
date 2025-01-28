@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.name }}!</h1>
+    <p>Your Mobile: {{ user.mobile }}</p>
+    <p>Your Points: {{ user.points }}</p>
+
+    <h3>Upload Image:</h3>
+    <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h3>Your Uploaded Images:</h3>
+    {% for image in user.images %}
+        <div>
+            <img src="{{ url_for('static', filename='uploads/' + image.filename) }}" alt="Image" width="100">
+            <p>Status: {{ image.status }}</p>
+        </div>
+    {% endfor %}
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Image Comparison App</h1>
+
+    <!-- User Login Form -->
+    <h2>User Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        <label for="mobile">Mobile:</label>
+        <input type="text" name="mobile" id="mobile" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Admin Login Link -->
+    <h2><a href="{{ url_for('admin_login') }}">Admin Login</a></h2>
+
+    <!-- Registration Link for Users -->
+    <p><a href="{{ url_for('register') }}">Register</a></p>
+</body>
+</html>
